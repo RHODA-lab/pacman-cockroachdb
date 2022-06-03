@@ -1,0 +1,22 @@
+{
+  "name": "pacman",
+  "version": "0.0.1",
+  "description": "Pac-Man Node.js Game",
+  "author": "Ivan Font <ivan@ivanfont.com>",
+  "main": "bin/server.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "license": "GPLv3",
+  "dependencies": {
+    "kube-service-bindings": "^0.0.8",
+    "body-parser": "^1.17.1",
+    "express": "^4.14.1",
+    "jade": "^1.11.0",
+    "mongodb": "^4.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
