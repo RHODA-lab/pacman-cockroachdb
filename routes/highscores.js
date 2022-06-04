@@ -61,14 +61,24 @@ router.post('/', urlencodedParser, function(req, res, next) {
         var insert_score = "INSERT INTO highscores (name, cloud, zone, host, score, level, date, referer, user_agent, hostname, ip_addr) VALUES ('" + req.body.name + "', '" + req.body.cloud + "', '" + req.body.zone + "', '" + req.body.host +  "', " + userScore + ", " + userLevel + ", '06/03/2022', '" + req.header.referer + "', '" + req.headers['user-agent'] + "', '" + req.hostname + "', '" + req.ip + "')";
         console.log('INSERT QUERY: ' + insert_score);
         db.query(insert_score, function(err, rows){
-            if(err){
-                console.error(err);
-                return;
-            }else{
-                console.log(rows);
-                return;
-            }
-        });
+            var returnStatus = '';
+
+            if (err) {
+                console.log(err);
+                returnStatus = 'error';
+            } else {
+                console.log('Successfully inserted highscore');
+                returnStatus = 'success';
+          }
+
+                res.json({
+                    name: req.body.name,
+                    zone: req.body.zone,
+                    score: userScore,
+                    level: userLevel,
+                    rs: returnStatus
+                });
+            });
 
         console.log('highscore 1003');
     });
