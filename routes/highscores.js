@@ -58,7 +58,7 @@ router.post('/', urlencodedParser, function(req, res, next) {
         console.log('highscore 1002');
         
         // Insert high score with extra user data
-        var insert_score = "INSERT INTO highscores (name, cloud, zone, host, score, level, date, referer, user_agent, hostname, ip_addr) VALUES ('" + req.body.name + "', '" + req.body.cloud + "', '" + req.body.zone + "', '" + req.body.host +  "', " + userScore + ", " + userLevel + ", " + NOW() + ", '" + req.header.referer + "', '" + req.headers['user-agent'] + "', '" + req.hostname + "', '" + req.ip + "')";
+        var insert_score = "INSERT INTO highscores (name, cloud, zone, host, score, level, date, referer, user_agent, hostname, ip_addr) VALUES ('" + req.body.name + "', '" + req.body.cloud + "', '" + req.body.zone + "', '" + req.body.host +  "', " + userScore + ", " + userLevel + ", '" + Date() + "', '" + req.header.referer + "', '" + req.headers['user-agent'] + "', '" + req.hostname + "', '" + req.ip + "')";
         console.log('INSERT QUERY: ' + insert_score);
         db.query(insert_score, function(err, rows){
             if(err){
