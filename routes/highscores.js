@@ -40,17 +40,16 @@ router.get('/list', urlencodedParser, function(req, res, next) {
         });
         */
 
-        db.query(query, function(err, rows){
+        //db.query(query, function(err, rows){
+        db.query(get_highscores, function(err, rows){
         if(err){
             console.error(err);
             //callback(err, rows);
-            return;
         }else{
             console.log(rows);
             //callback(err, rows);
-            return;
         }
-    
+        res.json(rows);
     });
   });
 });
