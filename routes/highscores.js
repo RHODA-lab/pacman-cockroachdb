@@ -21,7 +21,7 @@ router.get('/list', urlencodedParser, function(req, res, next) {
 
         // Retrieve the top 10 high scores
         var col = db.db("pacman").collection('highscores');
-        var get_highscores = "SELECT name, cloud, zone, host, score FROM highscores ORDER BY score DESC LIMIT 10;"
+        var get_highscores = "SELECT name, cloud, zone, host, score FROM highscores ORDER BY score DESC LIMIT 10";
         
         /*
         col.find({}).sort([['score', -1]]).limit(10).toArray(function(err, docs) {
