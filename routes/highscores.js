@@ -43,18 +43,18 @@ router.get('/list', urlencodedParser, function(req, res, next) {
         */
 
     
-        db.query(get_highscores, function(err, res){
+        db.query(get_highscores, function(err, qres){
         console.log('Within DB.QUERY');    
         if(err){
             console.error(err);
         }else{
-            console.log(res);            
+            console.log(qres);            
         }
         
         var result = [];
             
-        for(var i=0; i < res.rows.length; i++){
-            result.push(res.rows[i]);
+        for(var i=0; i < qres.rows.length; i++){
+            result.push(qres.rows[i]);
             //result.push({ name: res.rows[i].name, cloud: res.rows[i].cloud, zone: res.rows[i].zone, host: res.rows[i].host, score: res.rows[i].score });
         }    
         
