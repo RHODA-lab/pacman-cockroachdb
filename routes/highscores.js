@@ -57,7 +57,7 @@ router.get('/list', urlencodedParser, function(req, res, next) {
             result.push(qres.rows[i]);
             //result.push({ name: res.rows[i].name, cloud: res.rows[i].cloud, zone: res.rows[i].zone, host: res.rows[i].host, score: res.rows[i].score });
         }    
-        
+        console.log('Result Array: ' + result);
         res.json(result);
     });
   });
