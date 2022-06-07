@@ -52,6 +52,7 @@ router.get('/list', urlencodedParser, function(req, res, next) {
         }
     
     });
+  });
 });
 
 // Accessed at /highscores
