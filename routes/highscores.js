@@ -43,16 +43,22 @@ router.get('/list', urlencodedParser, function(req, res, next) {
         */
 
     
-        db.query(get_highscores, function(err, rows){
+        db.query(get_highscores, function(err, res){
         console.log('Within DB.QUERY');    
         if(err){
             console.error(err);
-            //callback(err, rows);
         }else{
-            console.log(rows);
-            //callback(err, rows);
+            console.log(res);            
         }
-        res.json(rows);
+        
+        var result = [];
+            
+        for(var i=0; i < res.rows.length; i++){
+            result.push(res.rows[i]);
+            //result.push({ name: res.rows[i].name, cloud: res.rows[i].cloud, zone: res.rows[i].zone, host: res.rows[i].host, score: res.rows[i].score });
+        }    
+        
+        res.json(result);
     });
   });
 });
