@@ -21,6 +21,9 @@ router.get('/list', urlencodedParser, function(req, res, next) {
 
         // Retrieve the top 10 high scores
         var col = db.db("pacman").collection('highscores');
+        var get_highscores = "SELECT name, cloud, zone, host, score FROM highscores ORDER BY score DESC LIMIT 10;"
+        
+        /*
         col.find({}).sort([['score', -1]]).limit(10).toArray(function(err, docs) {
             var result = [];
             if (err) {
@@ -35,6 +38,19 @@ router.get('/list', urlencodedParser, function(req, res, next) {
 
             res.json(result);
         });
+        */
+
+        db.query(query, function(err, rows){
+        if(err){
+            console.error(err);
+            //callback(err, rows);
+            return;
+        }else{
+            console.log(rows);
+            //callback(err, rows);
+            return;
+        }
+    
     });
 });
 
