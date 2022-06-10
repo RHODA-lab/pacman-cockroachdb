@@ -19,45 +19,20 @@ router.get('/list', urlencodedParser, function(req, res, next) {
             return next(err);
         }
         
-        console.log('Within Database.getDb');
-        
         // Retrieve the top 10 high scores
         //var col = db.db("pacman").collection('highscores');
         var get_highscores = "SELECT name, cloud, zone, host, score FROM highscores ORDER BY score DESC LIMIT 10";
-        console.log('QUERY: '+ get_highscores);
-        /*
-        col.find({}).sort([['score', -1]]).limit(10).toArray(function(err, docs) {
-            var result = [];
-            if (err) {
-                console.log(err);
-            }
+        // console.log('QUERY: '+ get_highscores);
 
-            docs.forEach(function(item, index, array) {
-                result.push({ name: item['name'], cloud: item['cloud'],
-                              zone: item['zone'], host: item['host'],
-                              score: item['score'] });
-            });
-
-            res.json(result);
-        });
-        */
-
-    
-        db.query(get_highscores, function(err, qres){
-        console.log('Within DB.QUERY');    
+        db.query(get_highscores, function(err, qres){   
         if(err){
             console.error(err);
-        }else{
-            console.log(qres);            
-        }
-        
-        var result = [];
-            
+        }        
+        var result = [];          
         for(var i=0; i < qres.rows.length; i++){
-            result.push(qres.rows[i]);
-            //result.push({ name: res.rows[i].name, cloud: res.rows[i].cloud, zone: res.rows[i].zone, host: res.rows[i].host, score: res.rows[i].score });
+            result.push(qres.rows[i]);            
         }    
-        console.log('Result Array: ' + result);
+        //console.log('Result Array: ' + result);
         res.json(result);
     });
   });
